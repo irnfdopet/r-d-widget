@@ -1,0 +1,17 @@
+app-vue-2
+=========
+npm install -g @vue/cli
+vue create app-vue-2
+
+
+Builds
+======
+lib (Library)
+-------------
+npm run build:lib
+
+wc (Web Component)
+------------------
+npm run build:wc
+
+

@@ -5,7 +5,8 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const vueAppPath = path.resolve(__dirname, '..', 'app-vue', 'dist');
+// const vueAppPath = path.resolve(__dirname, '..', 'app-vue', 'dist');
+const vueAppPath = path.resolve(__dirname, '..', 'app-vue-2', 'dist');
 
 // Log the resolved path to ensure it's correct
 console.log(`Attempting to serve Vue app from calculated path: ${vueAppPath}`);
