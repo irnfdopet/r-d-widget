@@ -1,29 +1,27 @@
 <template>
-  <div id="app">
-    <section>
-      <div class="container">
-        <h2 class="mb-2">Posts List</h2>
-        <div>
-          <table class="vs-table">
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Body</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="post in paginatedPosts" :key="post.id">
-                <td>{{ post.id }}</td>
-                <td>{{ post.title }}</td>
-                <td>{{ post.body }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+  <section>
+    <div class="container">
+      <h2 class="mb-2">Posts List</h2>
+      <div>
+        <table class="vs-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Body</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="post in paginatedPosts" :key="post.id">
+              <td>{{ post.id }}</td>
+              <td>{{ post.title }}</td>
+              <td>{{ post.body }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
 </template>
 
 <script>
