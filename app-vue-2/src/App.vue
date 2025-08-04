@@ -111,6 +111,12 @@ h3 {
   color: green;
 }
 
+:host h1,
+:host h2,
+:host h3 {
+  color: green;
+}
+
 @media screen and (min-width: 992px) {
   .vs-table {
     max-width: 75%;

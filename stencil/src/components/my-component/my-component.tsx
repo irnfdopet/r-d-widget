@@ -27,7 +27,7 @@ export class MyComponent {
   }
 
   render() {
-    return <section><h1>Web Component</h1>
+    return <section><h1>Stencil Web Component</h1>
       <h2>Widget Code</h2><div>Hello, World! I'm {this.getText()}</div></section>;
   }
 }

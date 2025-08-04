@@ -1,7 +1,13 @@
 h1,
 h2,
 h3 {
-    color: green;
+  color: green;
+}
+
+:host h1,
+:host h2,
+:host h3 {
+  color: green;
 }
 
 @media screen and (min-width: 992px) {
