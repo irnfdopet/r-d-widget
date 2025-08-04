@@ -3,6 +3,20 @@
     <div class="container">
       <h2 class="mb-2">{{ this.initialWidgetTitle }}</h2>
       <h3 class="mb-2">Posts List</h3>
+      <!-- <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Active</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul> -->
       <div>
         <table class="vs-table">
           <thead>
@@ -94,7 +108,7 @@ export default {
 h1,
 h2,
 h3 {
-    color: green;
+  color: green;
 }
 
 @media screen and (min-width: 992px) {
