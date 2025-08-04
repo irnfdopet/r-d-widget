@@ -1,6 +1,10 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
+  // Disable CSS extraction into separate file
+  // css: {
+  //   extract: false
+  // },
   chainWebpack: config => {
     // config.entryPoints.clear(); // Clear all entry points
 

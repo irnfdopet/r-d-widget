@@ -1,0 +1,12 @@
+h1,
+h2,
+h3 {
+    color: green;
+}
+
+@media screen and (min-width: 992px) {
+  .vs-table {
+    max-width: 75%;
+    margin: 0 auto;
+  }
+}

@@ -1,7 +1,8 @@
 <template>
   <section>
     <div class="container">
-      <h2 class="mb-2">Posts List</h2>
+      <h2 class="mb-2">{{ this.initialWidgetTitle }}</h2>
+      <h3 class="mb-2">Posts List</h3>
       <div>
         <table class="vs-table">
           <thead>
@@ -27,11 +28,22 @@
 <script>
 export default {
   name: 'App',
+  props: {
+    initialWidgetTitle: {
+      required: true,
+      type: String,
+    },
+    initialPostsPerPage: {
+      required: true,
+      type: Number,
+      default: 5
+    }
+  },
   data() {
     return {
       posts: [],
       currentPage: 1,
-      postsPerPage: 5,
+      postsPerPage: this.initialPostsPerPage
     };
   },
   computed: {
@@ -77,9 +89,12 @@ export default {
 };
 </script>
 
-<style>
-h2 {
-  color: red;
+<style scoped>
+/* @import './app.css'; */
+h1,
+h2,
+h3 {
+    color: green;
 }
 
 @media screen and (min-width: 992px) {
