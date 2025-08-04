@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
-    "start:demo": "node server-demo.js",
-    "start:demo-vg": "node server-demo-vg.js"
+    "start:demo-1": "node server-demo-1.js",
+    "start:demo-2": "node server-demo-2.js",
+    "start:demo-3": "node server-demo-3.js"
   },
   "keywords": [],
   "author": "",

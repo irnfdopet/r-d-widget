@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3002;
 
-const vueAppPath = path.resolve(__dirname, '..', 'demos', 'demo-3');
+const vueAppPath = path.resolve(__dirname, '..', 'demos', 'demo-2');
 
 app.use(cors());
 app.use(express.static(vueAppPath));
