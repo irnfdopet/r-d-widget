@@ -98,14 +98,15 @@ export default {
     },
   },
   mounted() {
+    // Fetch posts when the component is mounted
     this.fetchPosts();
-  }
+  },
 };
 </script>
 
 <style scoped>
-/* @import './app.css'; */
-h1,
+@import './app.css';
+/* h1,
 h2,
 h3 {
   color: green;
@@ -122,5 +123,5 @@ h3 {
     max-width: 75%;
     margin: 0 auto;
   }
-}
+} */
 </style>
