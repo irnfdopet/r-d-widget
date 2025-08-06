@@ -5,9 +5,9 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:app": "vue-cli-service build --mode production",
-    "build:wc": "VUE_APP_BUILD_TARGET=wc vue-cli-service build --target wc --inline-vue --name vetstoria-widget ./src/vetstoria-widget.js",
-    "build:all": "npm run build:app && npm run build:wc",
+    "build:lib": "vue-cli-service build --target lib --name vetstoria-widget ./src/App.vue",
+    "build:wc": "vue-cli-service build --target wc --name vetstoria-widget ./src/App.vue",
+    "build:wcil": "vue-cli-service build --target wc --inline-vue --name vetstoria-widget ./src/App.vue",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

@@ -1,8 +1,20 @@
 import Vue from 'vue';
-import wrap from '@vue/web-component-wrapper';
-import App from './App.vue';
-// import './app.css'; 
+import VetstoriaWidget from './App.vue';
+import VueCustomElement from 'vue-custom-element';
 
-// Wrap the Vue component and define it as a custom element
-const CustomElement = wrap(Vue, App);
-window.customElements.define('vetstoria-widget', CustomElement);
+Vue.use(VueCustomElement);
+
+Vue.customElement('vetstoria-widget', VetstoriaWidget, {
+    shadow: true,
+    props: ['initialPostsPerPage', 'initialWidgetTitle'],
+    beforeCreateVueInstance(root) {
+        const rootNode = root.el.getRootNode();
+
+        if (rootNode instanceof ShadowRoot) {
+            root.shadowRoot = rootNode;
+        } else {
+            root.shadowRoot = document.head;
+        }
+        return root;
+    },
+});
