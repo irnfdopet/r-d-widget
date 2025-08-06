@@ -44,8 +44,13 @@
       </nav>
     </div>
     <div class="container">
-      <h2 class="mb-2">{{ this.initialWidgetTitle }}</h2>
-      <h3 class="mb-2">Posts List</h3>
+      <h2 class="mb-2">{{ this.initialWidgetTitle }} (h2)</h2>
+      <ul>
+        <li>Bootstrap loading</li>
+        <li>CSS media query is working</li>
+      </ul>
+      <hr>
+      <h2 class="mb-2">Posts List (h2)</h2>
       <div>
         <table class="vs-table">
           <thead>
@@ -78,7 +83,7 @@ export default {
     },
     initialPostsPerPage: {
       required: false,
-      type: Number,
+      type: [Number, String],
       default: 5
     }
   },
