@@ -44,11 +44,11 @@ export default {
   name: 'App',
   props: {
     initialWidgetTitle: {
-      required: true,
+      required: false,
       type: String,
     },
     initialPostsPerPage: {
-      required: true,
+      required: false,
       type: Number,
       default: 5
     }
@@ -105,6 +105,7 @@ export default {
 </script>
 
 <style scoped>
+@import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css');
 @import './app.css';
 /* h1,
 h2,

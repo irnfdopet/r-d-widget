@@ -5,13 +5,13 @@ module.exports = defineConfig({
   // css: {
   //   extract: false
   // },
-  chainWebpack: config => {
-    // config.entryPoints.clear(); // Clear all entry points
+  // chainWebpack: config => {
+  //   // config.entryPoints.clear(); // Clear all entry points
 
-    config.entry('vetstoria-widget').add('./src/vetstoria-widget.js');
+  //   config.entry('vetstoria-widget').add('./src/vetstoria-widget.js');
 
-    config.output.filename('js/[name].js');
+  //   config.output.filename('js/[name].js');
 
-    config.optimization.delete('splitChunks');
-  }
+  //   config.optimization.delete('splitChunks');
+  // }
 })
