@@ -1,20 +1,21 @@
-import Vue from 'vue';
+// import Vue from 'vue';
 import VetstoriaWidget from './App.vue';
-import VueCustomElement from 'vue-custom-element';
+// import VueCustomElement from 'vue-custom-element';
+export default VetstoriaWidget;
 
-Vue.use(VueCustomElement);
+// Vue.use(VueCustomElement);
 
-Vue.customElement('vetstoria-widget', VetstoriaWidget, {
-    shadow: true,
-    props: ['initialPostsPerPage', 'initialWidgetTitle'],
-    beforeCreateVueInstance(root) {
-        const rootNode = root.el.getRootNode();
+// Vue.customElement('vetstoria-widget', VetstoriaWidget, {
+//     shadow: true,
+//     props: ['initialPostsPerPage', 'initialWidgetTitle'],
+//     beforeCreateVueInstance(root) {
+//         const rootNode = root.el.getRootNode();
 
-        if (rootNode instanceof ShadowRoot) {
-            root.shadowRoot = rootNode;
-        } else {
-            root.shadowRoot = document.head;
-        }
-        return root;
-    },
-});
+//         if (rootNode instanceof ShadowRoot) {
+//             root.shadowRoot = rootNode;
+//         } else {
+//             root.shadowRoot = document.head;
+//         }
+//         return root;
+//     },
+// });
