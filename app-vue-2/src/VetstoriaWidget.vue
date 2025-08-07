@@ -44,6 +44,9 @@
       </nav>
     </div>
     <div class="container">
+      <button class="btn btn-primary" @click="sendEventToGA">Click to track GA event</button>
+    </div>
+    <div class="container">
       <h2 class="mb-2">{{ this.initialWidgetTitle }} (h2)</h2>
       <ul>
         <li>Bootstrap is loading</li>
@@ -131,6 +134,15 @@ export default {
         this.currentPage--;
       }
     },
+    sendEventToGA() {
+      console.log('Button clicked in widget');
+
+      // Dispatch a custom event to the host page
+      this.$emit('widget-ga-interaction', {
+        action: 'button_clicked',
+        label: 'WC Widget "Click to track GA event" Button'
+      });
+    }
   },
   mounted() {
     // Fetch posts when the component is mounted
