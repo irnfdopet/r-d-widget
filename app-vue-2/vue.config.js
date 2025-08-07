@@ -1,4 +1,3 @@
-// vue.config.js
 const { defineConfig } = require('@vue/cli-service')
 
 function enableShadowCss(config) {
@@ -33,33 +32,28 @@ module.exports = defineConfig({
   transpileDependencies: true,
 
   // Conditionally set the output directory based on the build target
-  // If VUE_APP_BUILD_TARGET is 'wc', output to 'dist/wc', otherwise to 'dist'
   outputDir: process.env.VUE_APP_BUILD_TARGET === 'wc' ? 'dist/wc' : 'dist',
 
   // Configuration for your main application build
   pages: {
     app: {
-      entry: 'src/main.js', // Your main application entry
+      entry: 'src/main.js',
       template: 'public/index.html',
-      filename: 'index.html', // This is relative to the outputDir ('dist' in this case)
+      filename: 'index.html',
       chunks: ['chunk-vendors', 'chunk-common', 'app']
     }
   },
 
   // Configure Webpack for the web component build
   configureWebpack: config => {
-    // Apply this specific configuration only when building the web component
     if (process.env.VUE_APP_BUILD_TARGET === 'wc') {
       config.entry = {
         'vetstoria-widget': './src/vetstoria-widget.js' // Web component entry
       };
-      // Vue CLI's --target wc and --name flags handle the output filename and chunks
-      // within the specified outputDir. No need to modify config.output.filename here.
     }
   },
 
   // chainWebpack is for more granular control over webpack rules, loaders, etc.
-  // For separating output directories, outputDir is the primary mechanism.
   chainWebpack: config => {
     // enableShadowCss(config);
   },
