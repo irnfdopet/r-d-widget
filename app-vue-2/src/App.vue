@@ -80,6 +80,7 @@ export default {
     initialWidgetTitle: {
       required: false,
       type: String,
+      default: "Vetstoria Widget"
     },
     initialPostsPerPage: {
       required: false,
