@@ -1,5 +1,5 @@
 // import Vue from 'vue';
-import VetstoriaWidget from './App.vue';
+import VetstoriaWidget from './VetstoriaWidget.vue';
 // import VueCustomElement from 'vue-custom-element';
 export default VetstoriaWidget;
 

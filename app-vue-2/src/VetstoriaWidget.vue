@@ -44,7 +44,7 @@
       </nav>
     </div>
     <div class="container">
-      <button class="btn btn-primary" @click="sendEventToGA">Click to track GA event</button>
+      <button class="btn btn-primary my-4" @click="sendEventToGA">Click to track GA event</button>
     </div>
     <div class="container">
       <h2 class="mb-2">{{ this.initialWidgetTitle }} (h2)</h2>
