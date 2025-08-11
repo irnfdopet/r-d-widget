@@ -47,6 +47,10 @@
       <button class="btn btn-primary my-4" @click="sendEventToGA">Click to track GA event</button>
     </div>
     <div class="container">
+      <button class="btn btn-secondary my-4" @click="appendMessageToUrl">Append Message</button>
+    </div>
+    <div class="container">
+      <h1>Heading One (h1)</h1>
       <h2 class="mb-2">{{ this.initialWidgetTitle }} (h2)</h2>
       <ul>
         <li>Bootstrap is loading</li>
@@ -142,6 +146,12 @@ export default {
         action: 'button_clicked',
         label: 'WC Widget "Click to track GA event" Button'
       });
+    },
+    appendMessageToUrl() {
+      const message = 'this-is-a-test';
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.append('widgetMessage', message);
+      window.history.pushState({}, '', currentUrl.toString());
     }
   },
   mounted() {
