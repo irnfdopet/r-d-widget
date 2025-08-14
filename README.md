@@ -4,12 +4,23 @@
 - Build the vue app
 - Run the server
 - Embed the code
+- See the demo
 
 ## Prerequisite
 Requires [Node.js](https://nodejs.org/) v20.19.4 to run.
 
-## Run Vue app
-Install the dependencies and devDependencies and start the server.
+## Run vue app
+ App | Paths |
+| ------ | ------ |
+| Source | `widget-v2/src/App.vue` |
+| Build | `widget-v2/dist/js/*` |
+
+ Widget v2 | Paths |
+| ------ | ------ |
+| Source | `widget-v2/src/VetstoriaWidget.vue` |
+| Build | `widget-v2/dist/wc/*` |
+
+Install the dependencies and start the server by following these steps:
 
 ```sh
 cd app-vue-2
@@ -19,7 +30,7 @@ npm run build:all (appication and web component)
 ```
 
 ## Run server
-Install the dependencies and devDependencies and start the server.
+Install the dependencies and start the server by following these steps:
 
 ```sh
 cd server
@@ -33,7 +44,7 @@ Server runs on below port,
 http://localhost:3000
 ```
 
-## Widget's Embed
+## Widget's embed
 The embed script runs on `http://localhost:3000`.
 
 Embed Code:
@@ -44,7 +55,7 @@ Embed Code:
 <!-- End vetstoria embed code -->
 ```
 
-## Demo
+## See the demo
 Navigate to the folder below and open `index.html` in a web browser.
 
 ```sh
