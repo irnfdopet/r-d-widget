@@ -5,16 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build:lib": "vue-cli-service build --target lib --name vetstoria-widget ./src/App.vue",
-    "build:wc": "vue-cli-service build --target wc --name vetstoria-widget ./src/App.vue",
-    "build:wcil": "vue-cli-service build --target wc --inline-vue --name vetstoria-widget ./src/App.vue",
+    "build:app": "vue-cli-service build --mode production",
+    "build:wc-dev": "VUE_APP_BUILD_TARGET=wc-dev vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.8.3",
     "vue": "^2.6.14",
-    "vue-custom-element": "^3.3.0",
-    "vue-web-component-wrapper": "^1.7.7"
+    "vue-custom-element": "^3.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

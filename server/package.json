@@ -4,6 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "start:widget-div": "node server-div.js",
     "start:demo-1": "node server-demo-1.js",
     "start:demo-2": "node server-demo-2.js",
     "start:demo-3": "node server-demo-3.js"
