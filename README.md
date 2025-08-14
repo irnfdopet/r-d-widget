@@ -13,7 +13,6 @@ Install the dependencies and devDependencies and start the server.
 cd app-vue-2
 npm i
 npm run dev
-npm run build (production)
 npm run build:all (appication and web component)
 ```
 
