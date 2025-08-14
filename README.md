@@ -1,10 +1,21 @@
-# Widget (R & D)
+# Widget v2 (R & D)
 
 ## Steps
 
-- Run the server
 - Build the vue app
+- Run the server
 - Embed the code
+
+## Run Vue app
+Install the dependencies and devDependencies and start the server.
+
+```sh
+cd app-vue-2
+npm i
+npm run dev
+npm run build (production)
+npm run build:all (appication and web component)
+```
 
 ## Run server
 
@@ -24,27 +35,14 @@ Server runs on below port,
 http://localhost:3000
 ```
 
-## Run Vue app
-Install the dependencies and devDependencies and start the server.
-
-```sh
-cd app-vue
-npm i
-npm run dev
-npm run build (production)
-```
-
 ## Widget's Embed
 
-Replace `JS-NAME` with the actual Vue app build JS filename in the path below.
-
-```sh
-app-vue/dist/assets
-```
+The embed script runs on `http://localhost:3000`.
 
 Embed Code:
 
 ```sh
-<vetstoria-widget />
-<script type="module" src="http://localhost:3000/assets/<JS-NAME>.js"></script>
+<!-- Start vetstoria embed code -->
+<vetstoria-widget initial-posts-per-page="9" initial-widget-title="This is a demo widget"></vetstoria-widget><script src="http://localhost:3000/wc/vetstoria-widget.min.js"></script>
+<!-- End vetstoria embed code -->
 ```

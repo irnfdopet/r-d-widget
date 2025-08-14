@@ -1,5 +1,6 @@
 <template>
   <section>
+    <!-- Bootstrap nav -->
     <div class="container">
       <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -43,12 +44,34 @@
         </div>
       </nav>
     </div>
+
+    <hr>
+
+    <!-- Buttons: send event to Google Tag Manager (GTM) -->
+    <div class="container">
+      <button class="btn btn-info my-4 mx-2" @click="sendEventToGTMStep1">Step 1</button>
+      <button class="btn btn-info my-4 mx-2" @click="sendEventToGTMStep2">Step 2</button>
+      <button class="btn btn-info my-4 mx-2" @click="sendEventToGTMStep3">Step 3</button>
+      <button class="btn btn-info my-4 mx-2" @click="sendEventToGTMStep4">Step 4</button>
+    </div>
+
+    <hr>
+
+    <!-- Button: send event to Google Analytics (GA) -->
     <div class="container">
       <button class="btn btn-primary my-4" @click="sendEventToGA">Click to track GA event</button>
     </div>
+
+    <hr>
+
+    <!-- Button: append query string -->
     <div class="container">
       <button class="btn btn-secondary my-4" @click="appendMessageToUrl">Append Message</button>
     </div>
+
+    <hr>
+
+    <!-- Widget information -->
     <div class="container">
       <h1>Heading One (h1)</h1>
       <h2 class="mb-2">{{ this.initialWidgetTitle }} (h2)</h2>
@@ -56,26 +79,45 @@
         <li>Bootstrap is loading</li>
         <li>CSS media query is working</li>
       </ul>
-      <hr>
-      <h2 class="mb-2">Posts List (h2)</h2>
+    </div>
+
+    <hr>
+
+    <!-- GTM query string parameters -->
+    <div class="container">
+      <h2 class="mb-2">GTM parameters</h2>
       <div>
-        <table class="vs-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Body</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="post in paginatedPosts" :key="post.id">
-              <td>{{ post.id }}</td>
-              <td>{{ post.title }}</td>
-              <td>{{ post.body }}</td>
-            </tr>
-          </tbody>
-        </table>
+        <p v-if="widget.hasGtmParams">GTM parameters detected on the client's site!</p>
+        <ul v-if="widget.hasGtmParams">
+          <li v-for="([key, value], index) in utmEntries" :key="index">
+            <strong>{{ key }}:</strong> {{ value }}
+          </li>
+        </ul>
+        <p v-else>No GTM parameters found.</p>
       </div>
+    </div>
+
+    <hr>
+
+    <!-- Posts List -->
+    <div class="container">
+      <h2 class="mb-2">Posts List (h2)</h2>
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Body</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="post in paginatedPosts" :key="post.id">
+            <td>{{ post.id }}</td>
+            <td>{{ post.title }}</td>
+            <td>{{ post.body }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 </template>
@@ -99,7 +141,11 @@ export default {
     return {
       posts: [],
       currentPage: 1,
-      postsPerPage: this.initialPostsPerPage
+      postsPerPage: this.initialPostsPerPage,
+      widget: {
+        hasGtmParams: false,
+        utmParameters: {}
+      }
     };
   },
   computed: {
@@ -115,6 +161,9 @@ export default {
     },
     nextButtonState() {
       return this.currentPage === this.totalPages;
+    },
+    utmEntries() {
+      return Object.entries(this.widget.utmParameters || {});
     }
   },
   methods: {
@@ -152,11 +201,76 @@ export default {
       const currentUrl = new URL(window.location.href);
       currentUrl.searchParams.append('widgetMessage', message);
       window.history.pushState({}, '', currentUrl.toString());
+    },
+    detectGtmParams() {
+      // Use a try-catch block for safety, as some environments might restrict access
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        console.log('Current URL Parameters:', Object.fromEntries(urlParams.entries()));
+
+        // A list of common GTM/UTM parameters to check for
+        const gtmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'gclid'];
+
+        gtmParams.forEach(param => {
+          if (urlParams.has(param)) {
+            this.widget.hasGtmParams = true;
+            this.widget.utmParameters[param] = urlParams.get(param);
+          }
+        });
+
+        if (this.widget.hasGtmParams) {
+          console.log('Detected GTM Parameters:', this.widget.utmParameters);
+          // Now you can use this data, e.g., to pass it to a backend or for internal logic
+        }
+
+      } catch (error) {
+        console.error('Could not access window.location.search:', error);
+      }
+    },
+    displayClientData() {
+      const { dataLayer } = window;
+      console.log('Detecting client document...', document);
+      console.log('Detecting client window...', window);
+      console.log('Detecting client GTM dataLayer...', dataLayer);
+    },
+    sendEventToGTMStep1() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(
+        {
+          'event': 'wc_widget_step1',
+          'method': 'WC Widget "Step 1" Button'
+        });
+    },
+    sendEventToGTMStep2() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(
+        {
+          'event': 'wc_widget_step2',
+          'method': 'WC Widget "Step 2" Button'
+        });
+    },
+    sendEventToGTMStep3() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(
+        {
+          'event': 'wc_widget_step3',
+          'method': 'WC Widget "Step 3" Button'
+        });
+    },
+    sendEventToGTMStep4() {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(
+        {
+          'event': 'wc_widget_step4',
+          'method': 'WC Widget "Step 4" Button'
+        });
     }
   },
   mounted() {
     // Fetch posts when the component is mounted
     this.fetchPosts();
+    this.detectGtmParams();
+    this.displayClientData();
   },
 };
 </script>
