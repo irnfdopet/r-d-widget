@@ -31,9 +31,6 @@ function enableShadowCss(config) {
 module.exports = defineConfig({
   transpileDependencies: true,
 
-  // Disable filename hashing for web component builds
-  filenameHashing: process.env.VUE_APP_BUILD_TARGET === 'wc-v4' ? false : true,
-
   // Conditionally set the output directory based on the build target
   outputDir: process.env.VUE_APP_BUILD_TARGET === 'wc' ? 'dist/wc' : 'dist',
 
@@ -54,21 +51,11 @@ module.exports = defineConfig({
         'vetstoria-widget': './src/vetstoria-widget.js' // Web component entry
       };
     }
-    if (process.env.VUE_APP_BUILD_TARGET === 'wc-v4') {
-      config.entry = {
-        'vetstoria-widget': './src/vetstoria-widget-v4.js' // Web component entry
-      };
-    }
   },
 
   // chainWebpack is for more granular control over webpack rules, loaders, etc.
   chainWebpack: config => {
     // enableShadowCss(config);
-
-    // Remove splitChunks optimization for web component builds
-    if (process.env.VUE_APP_BUILD_TARGET === 'wc-v4') {
-      config.optimization.delete('splitChunks');
-    }
   },
   css: {
     // sourceMap: true,
