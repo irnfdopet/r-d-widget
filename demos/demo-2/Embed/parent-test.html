@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Parent Test - iframe injection</title>
+</head>
+
+<body>
+    <h2>Parent page</h2>
+    <div id="oabp-widget"></div>
+
+    <script>
+        (function createIframeAndInjectStyle() {
+            const widgetElement = document.getElementById('oabp-widget');
+            if (!widgetElement) return;
+
+            const iframeElement = document.createElement('iframe');
+            iframeElement.src = 'iframe-dummy.html';
+            iframeElement.width = '600';
+            iframeElement.height = '200';
+            iframeElement.style.border = '1px solid #ccc';
+
+            iframeElement.onload = function () {
+                try {
+                    const iframeDocument = iframeElement.contentDocument || iframeElement.contentWindow.document;
+                    if (!iframeDocument || !iframeDocument.head) return;
+
+                    if (iframeDocument.getElementById('imran')) return;
+
+                    const styleElement = iframeDocument.createElement('style');
+                    styleElement.id = 'imran';
+                    styleElement.textContent = 'h1, .booking-step-title { color: red; }';
+                    iframeDocument.head.appendChild(styleElement);
+                } catch (error) {
+                    console.error('Cannot access iframe content (cross-origin):', error);
+                }
+            };
+
+            widgetElement.appendChild(iframeElement);
+        })();
+    </script>
+
+</body>
+
+</html>
