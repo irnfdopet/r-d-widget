@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3000;
 // const vueAppPath = path.resolve(__dirname, '..', 'app-vue', 'dist');
 const vueAppPath = path.resolve(__dirname, '..', 'app-vue-2', 'dist');
 
-app.use(cors());
+app.use(cors('*'));
 app.use(express.static(vueAppPath));
 
 // Start the server
